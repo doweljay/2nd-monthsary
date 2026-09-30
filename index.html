@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy 2nd Monthsary, My Love ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at top, #fff5f7 0%, transparent 35%),
+        linear-gradient(135deg, #ffdce4, #f5a9b8);
+    color: #5b2935;
+    overflow-x: hidden;
+}
+
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px 14px 50px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.card {
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(110,35,55,0.20);
+    overflow: hidden;
+}
+
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 40px;
+    position: relative;
+}
+
+.mini-text {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a04e60;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 10vw, 72px);
+    line-height: 1.12;
+    color: #8d263c;
+    text-shadow: 0 5px 18px rgba(141,38,60,0.12);
+}
+
+.hero h1 span {
+    color: #c93655;
+}
+
+.hero-subtitle {
+    max-width: 600px;
+    margin: 20px auto 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #75404b;
+    font-style: italic;
+}
+
+.heart-line {
+    margin-top: 25px;
+    color: #c93655;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+
+.message-section {
+    padding: 10px 25px 45px;
+}
+
+.message-title {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: #8d263c;
+    margin-bottom: 25px;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    background: #d85670;
+    margin: 0 auto 30px;
+    border-radius: 10px;
+}
+
+.message {
+    max-width: 700px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #63313c;
+}
+
+.message p {
+    margin-bottom: 18px;
+}
+
+.message .opening {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: #9d2e48;
+}
+
+.signature {
+    text-align: center;
+    margin-top: 30px;
+    font-family: cursive;
+    font-size: 28px;
+    color: #a52d49;
+}
+
+
+.photo-area {
+    text-align: center;
+    padding: 10px 20px 50px;
+}
+
+.photo-button {
+    border: none;
+    outline: none;
+    padding: 17px 30px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #d94363, #a51f42);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(165,31,66,0.30);
+    transition: all 0.3s ease;
+}
+
+.photo-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(165,31,66,0.4);
+}
+
+.photo-button:active {
+    transform: scale(0.96);
+}
+
+
+.album {
+    display: none;
+    padding: 0 15px 45px;
+    text-align: center;
+}
+
+.album.show {
+    display: block;
+    animation: albumAppear 0.7s ease;
+}
+
+@keyframes albumAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.album-title {
+    font-family: Georgia, serif;
+    color: #8d263c;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.album-subtitle {
+    font-size: 14px;
+    color: #8a5963;
+    margin-bottom: 20px;
+}
+
+
+.swipe-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.photo-frame {
+    background: white;
+    padding: 10px;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(90,30,50,0.20);
+    overflow: hidden;
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    height: min(70vh, 600px);
+    object-fit: cover;
+    border-radius: 15px;
+    background: #f7dce2;
+}
+
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    color: #9d2e48;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(80,20,40,0.18);
+    z-index: 3;
+}
+
+.arrow-left {
+    left: -5px;
+}
+
+.arrow-right {
+    right: -5px;
+}
+
+
+.counter {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #8d263c;
+}
+
+.photo-caption {
+    margin-top: 8px;
+    color: #80505b;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+}
+
+
+.dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 15px auto 0;
+    max-width: 350px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e5a8b5;
+    transition: 0.3s;
+}
+
+.dot.active {
+    width: 20px;
+    border-radius: 10px;
+    background: #b92e4d;
+}
+
+
+.final-message {
+    display: none;
+    text-align: center;
+    padding: 20px 25px 45px;
+}
+
+.final-message.show {
+    display: block;
+    animation: albumAppear 1s ease;
+}
+
+.final-message h2 {
+    font-family: Georgia, serif;
+    color: #8d263c;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.final-message p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.8;
+    color: #693540;
+    font-size: 16px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 13px;
+    color: #95616b;
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        border-radius: 25px;
+    }
+
+    .hero {
+        padding: 45px 15px 30px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .message-section {
+        padding: 5px 20px 35px;
+    }
+
+    .message {
+        font-size: 15.5px;
+        line-height: 1.85;
+    }
+
+    .photo-frame img {
+        height: 65vh;
+        max-height: 600px;
+    }
+
+    .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .arrow-left {
+        left: 2px;
+    }
+
+    .arrow-right {
+        right: 2px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="heart" style="left:5%; animation-duration:10s; font-size:22px;">❤️</div>
+<div class="heart" style="left:15%; animation-duration:13s; animation-delay:2s; font-size:18px;">💕</div>
+<div class="heart" style="left:30%; animation-duration:11s; animation-delay:4s; font-size:25px;">💗</div>
+<div class="heart" style="left:50%; animation-duration:14s; animation-delay:1s; font-size:20px;">❤️</div>
+<div class="heart" style="left:68%; animation-duration:12s; animation-delay:3s; font-size:25px;">💞</div>
+<div class="heart" style="left:82%; animation-duration:10s; animation-delay:5s; font-size:18px;">💕</div>
+<div class="heart" style="left:94%; animation-duration:15s; font-size:23px;">❤️</div>
+
+
+<div class="container">
+
+<div class="card">
+
+
+    <header class="hero">
+
+        <div class="mini-text">
+            Here's A Little Something For You Love ❤️
+        </div>
+
+        <h1>
+            HAPPY 2ND MONTHSARY<br>
+            <span>MY LOVE ❤️</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Two months of us, And Still Counting Love
+        </p>
+
+        <div class="heart-line">
+            ───── ❤️ ─────
+        </div>
+
+    </header>
+
+
+    <section class="message-section">
+
+        <h2 class="message-title">
+            A Little Message For You Love 💌
+        </h2>
+
+        <div class="divider"></div>
+
+        <div class="message">
+
+            <p class="opening">
+                My love,
+            </p>
+
+            <p>
+                Happy 2nd monthsary mylove. ❤️
+            </p>
+
+            <p>
+                It may only be two months, but somehow,
+                you've already become such a beautiful and
+                important part of my life.
+            </p>
+
+            <p>
+                Thankyou For Always being there for me mylove,
+                event though grabe ku kabulayagon abi loudan pero choy,
+                Thanyou so much love,
+            
+            </p>
+
+            <p>
+                Thank you for being there for me always mylove,
+            </p>
+
+            <p>
+                Most especially, thank you for choosing to stay
+                and for allowing me to be part of your life.
+            </p>
+
+            <p>
+                I know we aren't perfect, and I know there are
+                days when things won't always be easy.
+                But I want you to know that I genuinely want
+                to keep choosing you.
+            </p>
+
+            <p>
+                I want to keep learning about you,
+                understanding you, supporting you,
+                and creating beautiful memories with you.
+            </p>
+
+            <p>
+                A Little Something For You Love ❤️
+            </p>
+
+            <p>
+                Two months down, and hopefully many,
+                many more to go.
+            </p>
+
+            <p>
+                I love you more than these words can explain,
+                and I hope you always remember how special
+                you are to me. ❤️
+            </p>
+
+            <div class="signature">
+                Always yours,<br>
+                Your Love ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="photo-area">
+
+        <button class="photo-button" onclick="openAlbum()">
+            💌 US LOVE
+        </button>
+
+    </section>
+
+
+
+    <section class="album" id="album">
+
+        <h2 class="album-title">
+            Our Little Bonding Time 📸
+        </h2>
+
+        <p class="album-subtitle">
+            Swipe left or right! ❤️
+        </p>
+
+
+        <div class="swipe-container" id="swipeArea">
+
+            <button
+                class="arrow arrow-left"
+                onclick="previousPhoto()">
+                ‹
+            </button>
+
+
+            <div class="photo-frame">
+
+                <img
+                    id="mainPhoto"
+                    src="photo1.jpg"
+                    alt="Our memory">
+
+            </div>
+
+
+            <button
+                class="arrow arrow-right"
+                onclick="nextPhoto()">
+                ›
+            </button>
+
+        </div>
+
+
+        <div class="counter">
+            <span id="currentNumber">1</span> / 17
+        </div>
+
+
+        <div class="photo-caption" id="caption">
+            One of my favorite memories with you ❤️
+        </div>
+
+
+        <div class="dots" id="dots"></div>
+
+    </section>
+
+
+    <!-- ================= FINAL MESSAGE ================= -->
+
+    <section class="final-message" id="finalMessage">
+
+        <h2>
+            And this is only the beginning... ❤️
+        </h2>
+
+        <p>
+            I can't wait to make many more memories with you,
+            take more pictures, laugh about more silly things,
+            and continue writing our story together.
+            Happy 2nd monthsary, my love. 💕
+        </p>
+
+    </section>
+
+
+    <footer>
+        Made with love, just for you. ❤️
+    </footer>
+
+</div>
+</div>
+
+
+<script>
+
+
+const photos = [
+    {
+        src: "1.jpg",
+        caption: "ILOVEYOU MY FAVORITE ❤️"
+    },
+    {
+        src: "2.jpg",
+        caption: "GWAPOHA NAKU ARI LOVE 💕"
+    },
+    {
+        src: "3.jpg",
+        caption: "DANIEL AND KATHRYN?. 💗"
+    },
+    {
+        src: "4.jpg",
+        caption: "LIBRARY YARN 💞"
+    },
+    {
+        src: "5.jpg",
+        caption: "CHOY JAPN KU ❤️"
+    },
+    {
+        src: "6.jpg",
+        caption: "TULOG YARN."
+    },
+    {
+        src: "7.jpg",
+        caption: "FIRST MEET HHAHAHHA 💕"
+    },
+    {
+        src: "8.jpg",
+        caption: "WALA IMISSTHIS."
+    },
+    {
+        src: "9.jpg",
+        caption: "MISSYOU LOVE. ❤️"
+    },
+    {
+        src: "10.jpg",
+        caption: "CUTEST EVER."
+    },
+    {
+        src: "11.jpg",
+        caption: "ILOVEYOU MY FAVORITE ❤️"
+    },
+    {
+        src: "12.jpg",
+        caption: "WAW PINAKA PRETTY SO FAR. 💗"
+    },
+    {
+        src: "13.jpg",
+        caption: "CUTEST. ❤️"
+    },
+    {
+        src: "14.jpg",
+        caption: "ILOVEYOU MY FAVORITE ❤️"
+    },
+    {
+        src: "15.jpg",
+        caption: "PRETTIEST. 💕"
+    },
+    {
+        src: "16.jpg",
+        caption: "WALA."
+    },
+    {
+        src: "17.jpg",
+        caption: "KITA BISAN NAAS SCHOOL. ❤️"
+    }
+];
+
+
+let currentPhoto = 0;
+
+const mainPhoto = document.getElementById("mainPhoto");
+const currentNumber = document.getElementById("currentNumber");
+const caption = document.getElementById("caption");
+const dots = document.getElementById("dots");
+
+photos.forEach((photo, index) => {
+
+    const dot = document.createElement("div");
+
+    dot.classList.add("dot");
+
+    if (index === 0) {
+        dot.classList.add("active");
+    }
+
+    dots.appendChild(dot);
+});
+
+
+function updatePhoto() {
+
+    const photo = photos[currentPhoto];
+
+    mainPhoto.src = photo.src;
+
+    mainPhoto.alt = "Our memory " + (currentPhoto + 1);
+
+    currentNumber.textContent = currentPhoto + 1;
+
+    caption.textContent = photo.caption;
+
+
+    const allDots = document.querySelectorAll(".dot");
+
+    allDots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+            "active",
+            index === currentPhoto
+        );
+
+    });
+}
+
+
+function nextPhoto() {
+
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+        currentPhoto = 0;
+    }
+
+    updatePhoto();
+}
+
+
+function previousPhoto() {
+
+    currentPhoto--;
+
+    if (currentPhoto < 0) {
+        currentPhoto = photos.length - 1;
+    }
+
+    updatePhoto();
+}
+
+
+function openAlbum() {
+
+    const album = document.getElementById("album");
+
+    album.classList.add("show");
+
+    setTimeout(() => {
+
+        album.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 150);
+}
+
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeArea = document.getElementById("swipeArea");
+
+
+swipeArea.addEventListener("touchstart", function(event) {
+
+    touchStartX = event.changedTouches[0].screenX;
+
+}, { passive: true });
+
+
+swipeArea.addEventListener("touchend", function(event) {
+
+    touchEndX = event.changedTouches[0].screenX;
+
+    handleSwipe();
+
+}, { passive: true });
+
+
+function handleSwipe() {
+
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (swipeDistance < -50) {
+        nextPhoto();
+    }
+
+    if (swipeDistance > 50) {
+        previousPhoto();
+    }
+
+}
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") {
+        nextPhoto();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousPhoto();
+    }
+
+});
+
+
+</script>
+
+</body>
+</html>
